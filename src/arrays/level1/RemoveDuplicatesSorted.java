@@ -17,15 +17,16 @@ public class RemoveDuplicatesSorted {
     public static int removeDuplicatesInPlace(int[] arr) {
         if (arr == null || arr.length == 0) return 0;
 
-        int j = 1; // next position for unique element
+        int slow = 0; // next position for unique element
 
-        for (int i = 1; i < arr.length; i++) {
-            if (arr[i] != arr[i - 1]) { // naya unique mila
-                arr[j] = arr[i];
-                j++;
+        for (int fast = 1; fast < arr.length; fast++) {
+            if (arr[slow] != arr[fast]) { // naya unique mila
+                slow++;
+                arr[slow] = arr[fast];
+
             }
         }
 
-        return j; // j = unique elements count
+        return slow+1; //  unique elements count
     }
 }
