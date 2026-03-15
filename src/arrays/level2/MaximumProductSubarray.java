@@ -5,6 +5,8 @@ public class MaximumProductSubarray {
         int[] arr={2,3,-2,4};
         System.out.println(maxProduct(arr));
     }
+    //O(n)
+    // O(1) space
     public static int maxProduct(int[] arr){
         int n=arr.length;
         int max=arr[0];
