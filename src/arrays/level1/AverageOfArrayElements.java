@@ -11,6 +11,7 @@ public class AverageOfArrayElements {
 
         int sum = 0;
 
+
         // Single pass traversal to compute sum
         for (int i = 0; i < arr.length; i++) {
             sum += arr[i];
