@@ -6,6 +6,7 @@ public class TopKFrequent {
         int k = 2;
         System.out.println(Arrays.toString(topKFrequent(nums, k)));
     }
+    //method 1
     public static int[] topKFrequent(int[] nums, int k) {
         HashMap<Integer, Integer> map = new HashMap<>();
 
