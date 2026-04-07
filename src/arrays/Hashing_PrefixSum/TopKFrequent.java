@@ -5,6 +5,8 @@ public class TopKFrequent {
         int[] nums = {1, 2, 2, 3, 3, 3};
         int k = 2;
         System.out.println(Arrays.toString(topKFrequent(nums, k)));
+
+        System.out.println(Arrays.toString(topKFrequent1(nums, k)));
     }
     //method 1
     public static int[] topKFrequent(int[] nums, int k) {
@@ -31,6 +33,26 @@ public class TopKFrequent {
 
             result[i] = maxElement;
             map.remove(maxElement);
+        }
+
+        return result;
+    }
+    //method 2
+
+    public static int[] topKFrequent1(int[] nums, int k) {
+        HashMap<Integer, Integer> freqMap = new HashMap<>();
+
+        for (int num : nums) {
+            freqMap.put(num, freqMap.getOrDefault(num, 0) + 1);
+        }
+
+        List<Integer> elements = new ArrayList<>(freqMap.keySet());
+
+        elements.sort((a, b) -> freqMap.get(b) - freqMap.get(a));
+
+        int[] result = new int[k];
+        for (int i = 0; i < k; i++) {
+            result[i] = elements.get(i);
         }
 
         return result;
