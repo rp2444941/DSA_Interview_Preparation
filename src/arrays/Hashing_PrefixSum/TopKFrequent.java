@@ -7,6 +7,7 @@ public class TopKFrequent {
         System.out.println(Arrays.toString(topKFrequent(nums, k)));
 
         System.out.println(Arrays.toString(topKFrequent1(nums, k)));
+        System.out.println(Arrays.toString(topKFrequent2(nums, k)));
     }
     //method 1
     public static int[] topKFrequent(int[] nums, int k) {
@@ -53,6 +54,39 @@ public class TopKFrequent {
         int[] result = new int[k];
         for (int i = 0; i < k; i++) {
             result[i] = elements.get(i);
+        }
+
+        return result;
+    }
+    //method 3 hashing
+    public static int[] topKFrequent2(int[] nums, int k) {
+        HashMap<Integer, Integer> freqMap = new HashMap<>();
+
+        // Step 1: Count frequency
+        for (int num : nums) {
+            freqMap.put(num, freqMap.getOrDefault(num, 0) + 1);
+        }
+
+        // Step 2: Min heap based on frequency
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>(
+                (a, b) -> freqMap.get(a) - freqMap.get(b)
+        );
+
+        // Step 3: Keep only top k frequent elements
+        for (int num : freqMap.keySet()) {
+            minHeap.offer(num);
+
+            if (minHeap.size() > k) {
+                minHeap.poll();
+            }
+        }
+
+        // Step 4: Build result
+        int[] result = new int[k];
+        int index = 0;
+
+        while (!minHeap.isEmpty()) {
+            result[index++] = minHeap.poll();
         }
 
         return result;
