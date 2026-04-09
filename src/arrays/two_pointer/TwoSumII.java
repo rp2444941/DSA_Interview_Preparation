@@ -5,6 +5,8 @@ public class TwoSumII {
         int[] numbers = {1, 2, 3, 4};
         int target = 3;
         System.out.println(Arrays.toString(twoSum(numbers, target))); // [1,2]
+
+        System.out.println(Arrays.toString(twoSum1(numbers, target)));
     }
     public static int[] twoSum(int[] numbers, int target) {
         int n = numbers.length;
@@ -18,5 +20,20 @@ public class TwoSumII {
         }
 
         return new int[]{-1, -1}; // safety
+    }
+    public static int[] twoSum1(int[] numbers, int target) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        for (int i = 0; i < numbers.length; i++) {
+            int complement = target - numbers[i];
+
+            if (map.containsKey(complement)) {
+                return new int[]{map.get(complement) + 1, i + 1};
+            }
+
+            map.put(numbers[i], i);
+        }
+
+        return new int[]{-1, -1};
     }
 }
