@@ -27,7 +27,7 @@ public class RotateArrayByK {
         // Step 2: Reverse first k elements
         reverse(arr,0,k-1);
         // Step 3: Reverse remaining n - k elements
-        reverse(arr,0,n-1);
+        reverse(arr,k,n-1);
 
     }
     // Helper method to reverse part of array from index start to end
