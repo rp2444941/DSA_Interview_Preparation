@@ -1,24 +1,58 @@
 package LinkedList.LEVEL_1;
 
 public class Foundation {
-    static class Node{
-        int data;
-        Node next;
-        Node(int data){
-            this.data=data;
-            this.next=null;
-        }
+    public static void main(String[] args) {
+        Foundation list=new Foundation();
+        list.insertFirst(3);
+        list.insertFirst(2);
+        list.insertFirst(8);
+        list.insertFirst(17);
+        list.display();
+
+
     }
-    // Q2 & Q3: Traverse and Count
-    public void display(Node head){
-        Node temp=head;// Head ko hamesha safe rakho, temp move karo
-        int count=0;
+    private Node head;
+    private Node tail;
+
+    private int size;
+
+    public Foundation() {
+        this.size = 0;
+    }
+
+    public void insertFirst(int val){
+        Node node=new Node(val);
+        node.next=head;
+        head=node;
+        if(tail==null){
+            tail=head;
+        }
+        size+=1;
+    }
+
+    public void display(){
+        Node temp=head;
         while(temp!=null){
-            System.out.println(temp.data +"-->");
+            System.out.print(temp.value+"-->");
             temp=temp.next;
-            count++;
         }
-        System.out.println("null | Total Node: "+ count);
+        System.out.println("End");
     }
+
+
+    private class Node{
+        int value;
+        Node next;
+
+        public Node(int value) {
+            this.value = value;
+        }
+
+        public Node(int value, Node next) {
+            this.value = value;
+            this.next = next;
+        }
+    }
+
 
 }
