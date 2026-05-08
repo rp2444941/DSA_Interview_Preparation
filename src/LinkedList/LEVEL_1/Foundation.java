@@ -7,6 +7,7 @@ public class Foundation {
         list.insertFirst(2);
         list.insertFirst(8);
         list.insertFirst(17);
+        list.insertLast(99);
         list.display();
 
 
@@ -28,6 +29,16 @@ public class Foundation {
             tail=head;
         }
         size+=1;
+    }
+    public void insertLast(int val){
+        if(tail==null){
+            insertFirst(val);
+            return;
+        }
+        Node node=new Node(val);
+        tail.next=node;
+        node=tail;
+        size++;
     }
 
     public void display(){
