@@ -11,6 +11,8 @@ public class Foundation {
         list.insert(100,3);
         System.out.println(list.deleteFirst());
         list.display();
+        System.out.println(list.deletelast());
+        list.display();
 
 
     }
@@ -70,6 +72,25 @@ public class Foundation {
         }
         size--;
         return val;
+    }
+    public int deletelast(){
+        if(size<=1){
+            return deleteFirst();
+        }
+        Node scLast=get(size-2);
+        int val=tail.value;
+        tail=scLast;
+        tail.next=null;
+        return val;
+    }
+
+    public Node get(int index){
+        Node node=head;
+        for (int i = 0; i <index; i++) {
+            node=node.next;
+
+        }
+        return node;
     }
 
     public void display(){
