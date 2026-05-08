@@ -9,6 +9,7 @@ public class Foundation {
         list.insertFirst(17);
         list.insertLast(99);
         list.insert(100,3);
+        System.out.println(list.deleteFirst());
         list.display();
 
 
@@ -60,6 +61,16 @@ public class Foundation {
 
     }
 
+    // Delete node
+    public int deleteFirst(){
+        int val=head.value;
+        head=head.next;
+        if(head==null){
+            tail=null;
+        }
+        size--;
+        return val;
+    }
 
     public void display(){
         Node temp=head;
