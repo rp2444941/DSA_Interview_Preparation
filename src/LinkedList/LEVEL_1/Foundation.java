@@ -15,6 +15,8 @@ public class Foundation {
         list.display();
         System.out.println(list.delete(2));
         list.display();
+        System.out.println(list.find(8));
+        list.display();
 
 
     }
@@ -98,6 +100,17 @@ public class Foundation {
         return val;
 
     }
+    public Node find(int value){
+        Node node=head;
+       while(node!=null){
+           if(node.value==value){
+               return node;
+           }
+           node=node.next;
+       }
+        return null;
+    }
+
 
     public Node get(int index){
         Node node=head;
