@@ -15,7 +15,9 @@ public class SetMatrixZeroes {
         printMatrix(matrix);
 
         // Function ko call kiya
-        setZeroes(matrix);
+//        setZeroes(matrix);
+
+        setZeroes2(matrix);
 
         System.out.println("\nMatrix after setZeroes:");
         printMatrix(matrix);
@@ -27,7 +29,7 @@ public class SetMatrixZeroes {
             System.out.println(Arrays.toString(row));
         }
     }
-
+//method 1
     public static void setZeroes(int[][] matrix) {
         int m=matrix.length;
         int n=matrix[0].length;
@@ -68,5 +70,35 @@ public class SetMatrixZeroes {
 
         }
     }
+
+   //method 2
+   public static void setZeroes2(int[][] matrix) {
+       int m = matrix.length;
+       int n = matrix[0].length;
+
+       // Naye arrays banaye track rakhne ke liye (Java me initially saare 0 hote hain)
+       int[] dummyRow = new int[m];
+       int[] dummyCol = new int[n];
+
+       // Step 1: Pehla pass - jahan 0 mile, dummy arrays me 1 mark kar do
+       for (int i = 0; i < m; i++) {
+           for (int j = 0; j < n; j++) {
+               if (matrix[i][j] == 0) {
+                   dummyRow[i] = 1; // i-th row badalni hai
+                   dummyCol[j] = 1; // j-th column badalna hai
+               }
+           }
+       }
+
+       // Step 2: Dusra pass - dummy arrays ko dekh kar matrix me 0 set karo
+       for (int i = 0; i < m; i++) {
+           for (int j = 0; j < n; j++) {
+               // Agar us row ya us column ko pehle mark kiya gaya tha, toh element ko 0 kar do
+               if (dummyRow[i] == 1 || dummyCol[j] == 1) {
+                   matrix[i][j] = 0;
+               }
+           }
+       }
+   }
 
 }
